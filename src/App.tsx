@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import HOCA from './component/HOCA';
+import HOCB from './component/HOCB';
+import Schedule from './pages/Schedule/page';
 
 function App() {
+  const user = localStorage.getItem("user");
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* <HOCA></HOCA> 
+      <HOCB></HOCB> */}
+      <Schedule></Schedule>
     </div>
   );
+}
+
+const HOC = (component: React.ReactNode) => {
+  return component
+}
+
+
+
+const B: React.FC<{ authorized: boolean }> = ({ authorized }) => {
+  return (<div>
+    {authorized ? "I am B" : "B Not Authorized"}
+  </div>)
 }
 
 export default App;
